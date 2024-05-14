@@ -1,0 +1,22 @@
+<app-map></app-map>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Location</th>
+            <th>Baddie's Name</th>
+            <th>Time Reported</th>
+            <th>Status</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr app-report-row
+                *ngFor="let r of reports"
+                [report]="r"
+                (delete)="onReportDelete($event)"
+        ></tr>
+        <!-- <tr *ngFor="let r of reports">{{r}}</tr> -->
+    </tbody>
+</table>
+<button class="btn btn-primary" routerLink="/reports/add">CREATE NUISANCE REPORT</button>   

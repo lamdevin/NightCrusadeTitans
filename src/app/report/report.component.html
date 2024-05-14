@@ -1,0 +1,51 @@
+<article class="border p-4 m-4">
+    <h2>NUISANCE REPORT</h2>
+    <span *ngIf="report.photo; then image"></span><br>
+    <ng-template #image>
+        <img src={{report.photo}}>
+    </ng-template>
+    <p>
+    id: {{ report.id }} <br>
+    Baddie's Name: {{ report.name }} <br>
+    Location: {{ report.location }} <br>
+    Reported By: {{ report.sent_by }} ({{ report.phone }}) <br>
+    Time Reported: {{ report.added_on | date:'medium' }}<br>
+    Status: 
+    <span *ngIf="report.solved; then solved else open"></span><br>
+    <ng-template #solved>
+        RESOLVED <br>
+        <span *ngIf="this.validLogin; then allowEdit"></span>
+        <ng-template #allowEdit>
+            <button 
+            class="btn btn-outline-primary"
+            (click)="onStatusChange($event, report.id, false)"
+            >REOPEN CASE</button>
+        </ng-template>
+    </ng-template> <br>
+    <ng-template #open>
+        OPEN <br>
+        <span *ngIf="this.validLogin; then allowEdit"></span>
+        <ng-template #allowEdit>
+            <button 
+            class="btn btn-outline-primary"
+            (click)="onStatusChange($event, report.id, true)"
+            >CLOSE CASE</button>
+        </ng-template>
+    </ng-template> <br>
+    Extra Info: {{ report.info }} <br>
+    <span id="button" class="d-grid gap-2 col-12">
+        <span *ngIf="this.validLogin; then allowEdit"></span>
+        <ng-template #allowEdit>
+            <button 
+                class="btn btn-danger"
+                (click)="onDelete($event, report.id)"
+                >
+                &#10005; DELETE
+            </button>
+        </ng-template>
+    </span>
+    </p>
+    <button 
+        class="btn btn-outline-primary"
+        (click)="onLogin()">LOGIN</button>
+</article>

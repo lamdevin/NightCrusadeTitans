@@ -1,0 +1,66 @@
+<form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit(form.value)"
+>
+    <fieldset class="d-grid gap-2 col-12">
+        <legend>Add Nuisance Report</legend>
+        <input 
+            type="text"
+            name="name"
+            placeholder="NAME"
+            formControlName="name"
+        >
+        <input 
+            type="text"
+            name="location"
+            placeholder="LOCATION"
+            formControlName="location"
+        >
+        <input 
+            type="number"
+            name="longitude"
+            step="0.000001"
+            placeholder="LONGITUDE"
+            formControlName="longitude"
+        >
+        <input 
+            type="number"
+            name="latitude"
+            step="0.000001"
+            placeholder="LATITUDE"
+            formControlName="latitude"
+        >
+        <input 
+            type="text"
+            name="sent_by"
+            placeholder="REPORTED BY"
+            formControlName="sent_by"
+        >
+        <input 
+            type="tel"
+            name="phone"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required
+            placeholder="REPORTER PHONE NUMBER"
+            formControlName="phone"
+        >
+        <input 
+            type="url"
+            name="photo"
+            placeholder="(Optional) Link of photo"
+            formControlName="photo"
+        >
+        <input 
+            type="text"
+            name="info"
+            placeholder="(Optional) Extra info for NCT"
+            formControlName="info"
+        >
+        <button 
+            class="btn btn-outline-primary"
+            [disabled]="!form.valid"
+            >SAVE</button>
+
+    </fieldset>
+    <span *ngIf="form.controls['name'].errors">Error</span>
+</form>
+<button class="btn btn-primary" routerLink="/">CANCEL</button>   

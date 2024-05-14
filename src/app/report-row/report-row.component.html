@@ -1,0 +1,46 @@
+<!-- <p>
+    <u>REPORT ROW</u> <br>
+    id (remove later): {{ report.id }} <br>
+    Location: {{ report.location }} <br>
+    Baddie's Name: {{ report.name }} <br>
+    Time Reported: {{ report.added_on | date:'medium' }}<br>
+    Status: 
+    <span *ngIf="report.solved; then solved else open"></span><br>
+    <ng-template #solved>RESOLVED</ng-template> <br>
+    <ng-template #open>OPEN</ng-template>
+    info: {{ report.info }}<br>
+    <span id="button" class="d-grid gap-2 col-12">
+        <button 
+            id="show" 
+            class="btn btn-outline-primary"
+            (click)="onView()"
+            >MORE INFO</button>
+        <button 
+            class="btn btn-danger"
+            (click)="onDelete($event, report.id)"
+        >&#10005;</button>
+    </span>
+
+</p> -->
+
+    <td>{{ report.location }}</td>
+    <td>{{ report.name }}</td>
+    <td>{{ report.added_on | date:'medium' }}</td>
+    <td>
+        <span *ngIf="report.solved; then solved else open"></span><br>
+        <ng-template #solved>RESOLVED</ng-template> <br>
+        <ng-template #open>OPEN</ng-template>
+    </td>
+    <td>
+        <button 
+            id="show" 
+            class="btn btn-outline-primary"
+            (click)="onView()"
+        >MORE INFO</button>
+    </td>
+    <td>
+        <button 
+            class="btn btn-danger"
+            (click)="onDelete($event, report.id)"
+        >&#10005;</button>
+    </td>

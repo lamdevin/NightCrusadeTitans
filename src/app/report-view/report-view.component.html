@@ -1,0 +1,12 @@
+<span *ngIf="this.report; then found else notFound"></span>
+<ng-template #found>
+    <app-report
+        [report] = "this.report" 
+        (statusChange) = "onReportStatusChange($event)"
+        (delete) = "onReportDelete($event)" 
+    ></app-report>
+</ng-template>
+<ng-template #notFound>
+    <p>Error: Report ID not found</p>
+    <a routerLink="/">Back Home</a>
+</ng-template>
